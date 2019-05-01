@@ -1,0 +1,40 @@
+<nz-layout style="height: 100vh" class="layout">
+    <nz-header>
+      <div class="logo">
+          <a routerLink="wall"><img src="assets/img/logo.png" alt="logo"></a>
+      </div>
+    </nz-header>
+    <nz-layout>
+      <nz-sider [nzWidth]="200" style="background:rgb(255, 255, 255)">
+        <ul nz-menu [nzMode]="'inline'" style="height:100%">
+          <li nz-submenu>
+            <span title><i nz-icon type="notification"></i>FoodTrack</span>
+            <ul>
+              <li nz-menu-item routerLink="wall">Wall</li>
+              <li nz-menu-item routerLink="statistics">Statistics</li>
+            </ul>
+          </li>
+          <li nz-submenu>
+            <span title><i nz-icon type="user"></i>User Profile</span>
+            <ul>
+              <li nz-menu-item routerLink="user-profile">Options</li>
+            </ul>
+          </li>
+          <li nz-submenu>
+            <span title><i nz-icon type="laptop"></i>Settings</span>
+            <ul>
+              <li nz-menu-item> <a (click)="logoutUser()">Log Out</a> </li>
+            </ul>
+          </li>
+        </ul>
+      </nz-sider>
+      <nz-layout style="padding:0 24px 24px" class="main">
+        <nz-content style="background:rgba(255, 255, 255, 0.623); padding: 24px; min-height: 500px; margin:16px 0; min-width: 400px;" class="content">
+        
+          <router-outlet></router-outlet>
+        
+        </nz-content>
+      </nz-layout>
+    </nz-layout>
+    <nz-footer style="text-align: center; background: #001529;" >Daniel Romero Michelena ©2019</nz-footer>
+  </nz-layout>

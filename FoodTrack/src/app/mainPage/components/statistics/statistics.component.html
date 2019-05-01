@@ -1,0 +1,28 @@
+<router-outlet>
+    <div id="calorieintake">
+    <nz-row [nzGutter]="16">
+        <nz-col [nzSpan]="12" style= 'background-color: white; padding: 1rem;'>
+          <nz-statistic [nzValue]="2100 | number" [nzTitle]="'Today\'s calorie intake'"></nz-statistic>
+        </nz-col>
+        <nz-col [nzSpan]="12" style= 'background-color: rgba(128, 128, 128, 0.534); padding: 1rem;'>
+          <nz-statistic [nzValue]="65100.111 | number: '1.0-2'" [nzTitle]="'Calorie intake per month'"></nz-statistic>
+        </nz-col>
+      </nz-row>
+    </div>
+
+    <nz-col [nzSpan]="12">
+        <nz-card>
+            <nz-statistic
+                [nzValue]="11.28 | number: '1.0-2'"
+                [nzTitle]="'Monthly intake change'"
+                [nzPrefix]="prefixTplOne"
+                [nzSuffix]="'%'"
+                [nzValueStyle]="{ color: '#3F8600' }"
+                
+              >
+            </nz-statistic>
+            <ng-template #prefixTplOne><i nz-icon type="arrow-up"></i></ng-template>
+        </nz-card>
+    </nz-col>
+
+</router-outlet>

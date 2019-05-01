@@ -1,0 +1,29 @@
+<nz-card style="width:300px;" nzTitle="Track what you ate today!">
+
+  <div class="content">
+
+    <input nz-input placeholder="Food Name" [(ngModel)]="foodName" style="max-width: 100px; min-width: 100px;" class="data"/>
+
+    <input nz-input placeholder="Food Description" [(ngModel)]="description" style="max-width: 200px; min-width: 100px;" class="data"/>
+
+    <label for="calories" style="margin-left: 10px">Calories: </label>
+    <nz-input-number [(ngModel)]="calories" [nzMin]="1" [nzMax]="10000" [nzStep]="1" style="min-width: 100px;" class="data" id="calories"></nz-input-number>
+
+    <nz-select
+        style="width: 100px;"
+        nzShowSearch
+        nzAllowClear
+        nzPlaceHolder="Select a meal time"
+        [(ngModel)]="mealTime"
+        class="data"
+      >
+        <nz-option nzLabel="Breakfast" nzValue="Breakfast"></nz-option>
+        <nz-option nzLabel="Lunch" nzValue="Lunch"></nz-option>
+        <nz-option nzLabel="Dinner" nzValue="Dinner"></nz-option>
+    </nz-select>
+
+    <button nz-button nzType="primary" class="data" (click)="publishStatus();">Post</button>
+
+  </div>
+  
+</nz-card>

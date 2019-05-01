@@ -1,0 +1,81 @@
+<nz-layout style="height: 100vh" class="layout">
+  <nz-header>
+    <div class="logo">
+       <a routerLink="/welcome"><img src="assets/img/logo.png" alt="logo"></a>
+    </div>
+    <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
+    </ul>
+  </nz-header>
+  <nz-content style="padding:0 50px;" class="main">
+    <nz-breadcrumb style="margin:16px 0;">
+      <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+      <nz-breadcrumb-item>Register</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <div style="padding: 24px; min-height: 280px;" class="content"> 
+      
+      <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <div class="set">
+        <nz-form-item>
+          <nz-form-control [nzSm]="14" [nzXs]="24">
+            <nz-input-group [nzPrefix]="prefixUser">
+            <input type="text" nz-input formControlName="email" id="email" placeholder="E-mail" />
+            </nz-input-group>
+            <nz-form-explain *ngIf="validateForm.get('email')?.dirty && validateForm.get('email')?.errors">
+              The input is not a valid E-mail!
+            </nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control [nzSm]="14" [nzXs]="24">
+            <nz-input-group [nzPrefix]="prefixLock">
+            <input
+              nz-input
+              type="password"
+              id="password"
+              formControlName="password"
+              (ngModelChange)="updateConfirmValidator()"
+              placeholder="Password"
+            />
+            </nz-input-group>
+            <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors"
+              >Please input your password!</nz-form-explain
+            >
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control [nzSm]="14" [nzXs]="24">
+            <nz-input-group [nzPrefix]="prefixLock">
+            <input nz-input type="password" formControlName="checkPassword" id="checkPassword" placeholder="Confirm Password" />
+            </nz-input-group>
+            <nz-form-explain
+              *ngIf="validateForm.get('checkPassword')?.dirty && validateForm.get('checkPassword')?.errors"
+            >
+              <ng-container *ngIf="validateForm.get('checkPassword')?.hasError('required')">
+                Please confirm your password!
+              </ng-container>
+              <ng-container *ngIf="validateForm.get('checkPassword')?.hasError('confirm')">
+                The passwords do not match.
+              </ng-container>
+            </nz-form-explain>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+        <nz-form-item nz-row style="margin-bottom:8px;" nz-row style="margin-left:-34px;">
+          <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button class="registerBttn" nz-button nzType="primary">Register</button>
+            <div class="or">
+            Or if you are already registered
+            <a routerLink="/home">login now!</a>
+          </div>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+      <ng-template #prefixUser><i nz-icon type="user"></i></ng-template>
+      <ng-template #prefixLock><i nz-icon type="lock"></i></ng-template>
+
+      
+    </div>
+  </nz-content>
+  <nz-footer style="text-align: center;">Daniel Romero Michelena ©2019</nz-footer>
+</nz-layout>

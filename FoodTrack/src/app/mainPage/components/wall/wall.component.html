@@ -1,0 +1,13 @@
+<router-outlet>
+   <div class=scroll>
+        <app-publisher [user]="currentUser$ | async"
+        (publish)="publishPost($event)">                
+        </app-publisher>
+
+        <ng-container>
+                <app-post-feed class="feed"></app-post-feed>
+        </ng-container>
+   </div>
+
+        
+</router-outlet>

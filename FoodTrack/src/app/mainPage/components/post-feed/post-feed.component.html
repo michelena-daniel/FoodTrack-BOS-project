@@ -1,0 +1,19 @@
+<!-- <div class="post-body">
+    <ng-container *ngFor="let post of data.post; let i=index">
+        <div *ngIf="i<3">
+                <h2> {{ post.foodName }} </h2>
+        </div>        
+    </ng-container>
+</div> -->
+<ng-container *ngFor="let post of data.post; let i=index;" class= "foodPost">
+<div *ngIf="i<4">
+<div style="padding:30px;">
+        <nz-card style="width:300px;" [nzBordered]="false" nzTitle="Meal">
+          <p>Eaten at: {{ post.eatenAt }}</p>
+          <p>Food name: {{ post.foodName }}</p>
+          <p>Description: {{ post.description }}</p>
+          <p>Calories: {{ post.calories }}</p>
+        </nz-card>
+      </div>
+    </div>
+</ng-container>

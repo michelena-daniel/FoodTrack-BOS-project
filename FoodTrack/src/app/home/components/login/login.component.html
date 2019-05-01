@@ -1,0 +1,54 @@
+<nz-layout style="height: 100vh" class="layout">
+  <nz-header>
+    <div class="logo">
+       <a routerLink="/welcome"><img src="assets/img/logo.png" alt="logo"></a>
+    </div>
+    <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
+    </ul>
+  </nz-header>
+  <nz-content style="padding:0 50px;" class="main">
+    <nz-breadcrumb style="margin:16px 0;">
+      <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+      <nz-breadcrumb-item>Login</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <div style="padding: 24px; min-height: 280px;" class="content"> 
+      <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group [nzPrefix]="prefixUser">
+              <input type="text" nz-input formControlName="email" placeholder="Email" />
+            </nz-input-group>
+            <nz-form-explain *ngIf="validateForm.get('email')?.dirty && validateForm.get('email')?.errors"
+              >Please input your email!</nz-form-explain
+            >
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group [nzPrefix]="prefixLock">
+              <input type="password" nz-input formControlName="password" placeholder="Password" />
+            </nz-input-group>
+            <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors"
+              >Please input your Password!</nz-form-explain
+            >
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <label nz-checkbox formControlName="remember">
+              <span>Remember me</span>
+            </label>
+            <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
+            <button nz-button class="login-form-button" [nzType]="'primary'">Log in</button>
+            <p>Or <a routerLink="/home/register">register now!</a></p>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+      <ng-template #prefixUser><i nz-icon type="user"></i></ng-template>
+      <ng-template #prefixLock><i nz-icon type="lock"></i></ng-template>
+      
+    </div>
+  </nz-content>
+  <nz-footer style="text-align: center;">Daniel Romero Michelena ©2019</nz-footer>
+</nz-layout>
+
